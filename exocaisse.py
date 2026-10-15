@@ -1,0 +1,21 @@
+print("=== Caisse ===")
+produit = input("Produit : ")
+prix_unitaire = float(input("Prix unitaire (en euros) : ").replace(",", "."))
+quantite = int(input("Quantité : "))
+remise = float(input("Remise (en %) : ").replace(",", "."))
+total_brut = prix_unitaire * quantite
+montant_remise = total_brut * remise / 100
+total_payer = total_brut - montant_remise
+print()
+print("============================")
+print("           TICKET")
+print("============================")
+print(f"{'Produit':<18}{produit:>12}")
+print(f"{'Prix unitaire':<18}{prix_unitaire:>8.2f}€")
+print(f"{'Quantité':<18}{quantite:>12}")
+print(f"{'Total brut':<18}{total_brut:>8.2f}€")
+print(f"{'Remise':<18}{montant_remise:>8.2f}%")
+print("----------------------------")
+print(f"{'À PAYER':<18}{total_payer:>8.2f} €")
+print("============================")
+print("Merci de votre visite !\n\tÀ bientôt.")
