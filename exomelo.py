@@ -1,5 +1,6 @@
 total = 0
 cap_franchi = False
+# Partie 1'
 for semaine in range(1, 11):
     depot = semaine * 2
     total = total + depot
@@ -9,7 +10,7 @@ for semaine in range(1, 11):
     else:
         print(f"Semaine {semaine} : dépôt de {depot} €, total = {total} €")
     if total > 50 and not cap_franchi:
-        print("🎉 Cap des 50 € franchi !")
+        print(" Cap des 50 € franchi !")
         cap_franchi = True
 if total >= 100:
     print("Objectif atteint !")
@@ -54,4 +55,3 @@ while True:
         break
     else:
         print("Choix invalide.")
-

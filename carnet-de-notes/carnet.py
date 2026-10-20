@@ -121,11 +121,15 @@ while compteur < 3:
 print("Note minimale :", note_min)
 print("Note maximale :", note_max)
 
+
 note_minimale = 20.0
 note_maximale = 0.0
+
 quantite = int(input("Combien de notes ? "))
+
 for numero in range(1, quantite + 1):
     note = float(input("Saisis une note : "))
+
     while note < 0 or note > 20:
         print("Note invalide !")
         note = float(input("Recommence : "))
@@ -135,3 +139,91 @@ for numero in range(1, quantite + 1):
         note_maximale = note
 print("Note minimale :", note_minimale)
 print("Note maximale :", note_maximale)
+
+
+
+print("======application des fonctions======")
+
+def note_est_valide(note):
+    return 0 <= note <= 20 # retourne True si la note est valide, sinon False
+
+def demander_note(invite) :
+    note = float(input(invite).replace(",", "."))
+    while not note_est_valide(note) :
+        print("Erreur la note doit être comprise entre 0 & 20")
+        note = float(input(invite).replace("," "."))
+    return note
+
+def calculer_moyenne(somme,nombre) :
+    if nombre == 0 :
+        return 0.0
+    return somme / nombre
+
+def determiner_mention(moyenne) :
+    if moyenne >= 18 :
+        return "Félicitation"
+    elif moyenne >= 16 :
+        return "Très bien"
+    elif moyenne >= 14 :
+        return "Bien"
+    elif moyenne >= 12 :
+        return "Assez bien" 
+    elif moyenne >= 10 :
+        return "Passable"
+    else :
+        return "Insuffisant"
+    
+def afficher_bulletin(nom,somme,nombre,note_minimale,note_maximale) :
+    #affichage du bulletin d'une étudiante
+    if nombre == 0 :
+        print(f"Aucune note enregistrée pour {nom}.")
+        return
+    moyenne = calculer_moyenne(somme,nombre)
+    print(f"Bulletin de {nom} :")
+    print(f"Nombre de note  {nombre}")
+    print(f"Moyenne {moyenne:.2f}")
+    print(f"Note minimale {note_minimale:.2f}")
+    print(f"Note maximale {note_maximale:.2f}")
+    print(f"Mention {determiner_mention(moyenne)}")
+    
+def afficher_menu() :
+    print("Menu :")
+    print("1. Ajouter une note")
+    print("2. Ajouter plusieurs notes")
+    print("3. Afficher le bulletin")
+    print("0. Quitter")
+        
+def lancement_programme() :
+    print("==== Carnet de Notes ====")
+    nom_etudiant = input("Entrez le nom de l'étudiant : ")
+    
+    somme_des_notes = 0.0
+    nombre_de_notes = 0
+    note_minimale = 20.0
+    note_maximale = 0.0
+    
+    choix = ""
+    while choix != "0":
+        afficher_menu()
+        choix = input("Votre choix : ")
+        
+        if choix == "1" or choix == "2" :
+            if choix == "1" :
+                quantite = 1
+            else :
+                quantite = int(input("Combien de notes voulez-vous ajouter ? "))
+            for numero in range(1, quantite +1) : 
+                note = demander_note(f"Entrez la note {numero} sur {quantite} : ")
+                somme_des_notes += note
+                nombre_de_notes += 1
+                note_minimale = min(note_minimale, note)
+                note_maximale = max(note_maximale, note)
+            print(f"{quantite} note(s) ajoutée(s) avec succés.")
+        elif choix == "3" :
+            afficher_bulletin(nom_etudiant,somme_des_notes,nombre_de_notes,note_minimale,note_maximale,)
+        elif choix == "0" :
+            print("Au revoir !")
+    else :
+        print("Choix invalide, veuillez réessayer, tapez 1, 2 , 3 ou 0.")
+        
+lancement_programme()
