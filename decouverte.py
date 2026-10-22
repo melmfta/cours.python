@@ -309,3 +309,169 @@ calculatrice (9, 5, "-")
 calculatrice (3, 1, "/")
 calculatrice (10, 0, "/") # test division par zéro
 calculatrice (5, 5, "^") # test opérateur inconnu
+
+
+# manipulation de chaînes
+mot = 'Python'
+print(mot[0]) # affiche le premier caractère P
+print(mot[-1]) # affiche le dernier caractère n
+print(mot[-2]) # affiche l'avant-dernier caractère o
+print(mot[1:4]) # affiche les caractères de l'index 1 à 3 (yht)
+print(mot[:3]) # affiche les trois premiers caractères (Pyt)
+print(mot[3:]) # affiche les caractères à partir de l'index 3 (hon)
+
+print(len(mot)) # affiche la longueur de la chaîne (6)
+
+# print(mot[9]) => erreur IndexError car l'index 0 n'existe pas dans la chaîne 'Python'
+mot[::-1] # 'nohtyP'
+
+# strip() supprime les espaces au début et à la fin d'une chaîne
+texte ="    Bonjour    "
+print(texte.strip()) # 'Bonjour'
+# lower() convertit tous les caractères d'une chaîne en minuscules
+print(texte.lower()) # '  bonjour  '
+#upper() convertit tous les caractères d'une chaîne en majuscules
+print(texte.upper()) # '  BONJOUR  '
+
+#title() : convertit la première lettre de chaque mot en majuscule
+prenom = "mark kamte"
+print(prenom.title()) # 'Mark Kamte'
+
+#replace() : remplace une sous-chaîne par une autre
+texte_modifie = texte.replace("Bonjour", "Bonsoir").strip()
+print(texte_modifie) # 'Bonsoir'
+
+# find() : retourne l'index de la première occurence d'une sous-chaîne, ou -1 si elle n'existe pas
+phrase = "Bonjour tout le monde"
+print(phrase.find("le")) # 12
+print(phrase.find("la")) # -1
+
+# in : retourne True si une sous-chaîne est présente dans ka chaîne, False sinon
+print("Bonjour" in phrase) # True
+print("Python" in phrase) # False
+
+# isdigit() : retourne True si tous les caractères de la chaîne sont des chiffres, False sinon
+print("12345".isdigit()) # True
+print("123a45".isdigit()) # False
+
+# isalpha() : retourne True si tous les caractères de la chaîne sont des lettres, False sinon
+print("abcde".isalpha()) # True
+print("abc123".isalpha()) # False
+
+# les liste : collection ordonnée et modifiable
+listePrenom = ["Mark", "Alicia", "Thomas", "Sélomey"]
+# accéder à un élément de la liste en se référant à son index
+print(listePrenom[1]) # affiche le premier de la liste "Mark"
+print(listePrenom[-1]) # affiche le dernier de la liste donc "Sélomey"
+# slicing : liste[debut:fin]
+print(listePrenom[:2]) # affiche les deux derniers de la liste donc "Thomas" et "Sélomey"
+print(listePrenom[1:2])
+
+vide = []
+print(vide) # affiche []
+
+plusieursTypes = ["Melvin", 25, True, ["jaune", ["orange","citron"],"rouge"]]
+print(plusieursTypes[3][0])
+print(plusieursTypes[3][1][1])
+
+nouvelExemple = [["Melvin", 23, True, ["jaune", ["raisins", "citron"], "bleu"]], ["Alicia", 30, False, ["bleu", ["vert", "violet"], "noir"]]]
+print(nouvelExemple[0][0], "a", nouvelExemple[0][1], "ans, il aime les", nouvelExemple[0][3][1][0], "et sa couleur c'est le", nouvelExemple[0][3][2])
+print(nouvelExemple[1][0], "a", nouvelExemple[1][1], "ans, elle aime les couleurs", nouvelExemple[1][3][1][0], nouvelExemple[1][3][0], nouvelExemple[1][3][1][1], "et le", nouvelExemple[1][3][2])
+
+
+# les méthodes de liste
+# ajouter / insère, retirer, remplace des éléments
+notes = [12.0, 15.5, 18.25]
+print("Départ : ", notes)
+# ajouter un élément à la fin de la liste : append()
+notes.append(16.0)
+print("Après append : ", notes)
+# retirer : retire et renvoie ke dernier élément : pop()
+derniere = notes.pop()
+print(f"pop() a renvoyé {derniere} , reste : {notes}")
+premiere = notes.pop()
+print(f"pop( a retiré {premiere} , reste :{notes}")
+notes.remove(15.5)
+print(f"Après remove(15.5)() , reste:{notes}")
+
+# nouvel insertion : insert(index,val)
+notes.insert(1,16)
+print(f"Après insert(1,16) , reste :{notes}")
+
+# remplacer un élément :
+notes[1] = 14.25
+print(f"Après remplacement de l'élément, reste :{notes}")
+
+#parcours une liste :
+prenoms = ["Mélodie","Timothée","Mark-Erwann","Sélomey","Thomas","Alicia","Coco"]
+for prenom in prenoms :
+    print(f"{prenom}")
+
+# nombre de valeurs dans une liste
+print(len(prenoms)) 
+
+# boucler à partir des index (= indices = clé = key)
+for index in range(0,len(prenoms)) :
+    print(f"{prenoms[index]}") # affiche les prénoms correspondant aux index 0 1 2 3 4 5
+    
+# une fonction c'est une économie de code
+
+
+# les tuples : collections ordonnées et immuable (elle doit se finir par une virgule ,)
+exemple_tuple = ("Melvin", 23, True)
+print(exemple_tuple[0])
+print(exemple_tuple[-1])
+
+uneSeuleValeur = ("Melvin",) # pour créer un tuple avec une seule valeur, il faut mettre une virgule à la fin
+
+date = (22,"octobre",2026)
+# déballage : une variable pour chaque élément du tuple
+jour, mois, annee = date
+print(f"Jour : {jour}, Mois : {mois}, Année : {annee}")
+
+def statistiques(notes) :
+    return(sum(notes) / len(notes), max(notes), min(notes))
+
+resultat = statistiques([12.0, 15.5, 18.25])
+
+print(resultat)
+moyenne, maximum, minimum = resultat
+
+note_min, note_max, moyenne = statistiques([12.0, 15.5, 18.25])
+print(f"Note min : {note_min}, Note max : {note_max}, Moyenne : {moyenne:.2f}")
+
+etudiant = ("Melvin","Tim","Tom")
+etudiant[0] # affiche "Melvin"
+# etudiant[1] = "Mélodie" => TypeError car les tuples sont immuables
+
+#dictionnaire : collection non ordonné de paires clé-valeur
+etudiant = {"prenom" : "Sélomey", "promo" : "B1DEV", "age" : 21}
+print(etudiant)
+print(etudiant["prenom"])
+print(etudiant["promo"])
+print(etudiant["age"])
+print(f"Dans la promo de {etudiant["promo"]} il y a {etudiant["prenom"]} qui a {etudiant["age"]} ans", )
+
+# tester la présence d'une clé :
+print("prenom" in etudiant) # True
+print("nom" in etudiant) # False
+# get : permet de récupérer la valeur associée à une clé, avec une valeur par défaut si la clé n'existe pas
+print(etudiant.get("prenom")) # Sélomey
+print(etudiant.get("nom", "Inconnu")) # "Inconnu" car la clé "nom" n'existe pas
+
+# ajputer une nouvelle paire clé-valeur
+etudiant["nom"] = "Dupont"
+print(f"{etudiant['prenom']} {etudiant['nom']}")
+
+# modification :
+etudiant["age"] = 18
+print(f"Après modification, l'âge de l'étudiant est : {etudiant['age']}")
+
+# suppression :
+del etudiant["age"]
+print(f"Après suppression, l'étudiant est : {etudiant}")
+
+etudiant["nom"] = ["Dupont", "Martin"]
+etudiant["prenom"] = {"prenom1" : "Sélomey", "prenom2" : "Timothée"}
+
+print(f"Etudiant après modification des noms et prénoms : {etudiant['prenom']['prenom1']} {etudiant['prenom']['prenom2']}")

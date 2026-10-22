@@ -41,5 +41,3 @@ def lancer_programme():
             print("Au revoir !")
             break
 
-
-lancer_programme()

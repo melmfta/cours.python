@@ -222,8 +222,9 @@ def lancement_programme() :
         elif choix == "3" :
             afficher_bulletin(nom_etudiant,somme_des_notes,nombre_de_notes,note_minimale,note_maximale,)
         elif choix == "0" :
+            # 
             print("Au revoir !")
     else :
-        print("Choix invalide, veuillez réessayer, tapez 1, 2 , 3 ou 0.")
+        print("Choix invalide, veuillez réessayer, tapez 1, 2 , 3 ou 0")
         
 lancement_programme()
